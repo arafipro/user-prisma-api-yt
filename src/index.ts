@@ -17,4 +17,18 @@ app.get("/users", async (c) => {
   }
 });
 
+app.get("/users/:id", async (c) => {
+  const id = parseInt(c.req.param("id"));
+  const adapter = new PrismaD1(c.env.DB);
+  const prisma = new PrismaClient({ adapter });
+  try {
+    const result = await prisma.user.findUnique({
+      where: { id: id },
+    });
+    return c.json(result);
+  } catch (e) {
+    return c.json({ error: e }, 500);
+  }
+});
+
 export default app;
