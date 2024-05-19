@@ -1,9 +1,42 @@
 import { PrismaD1 } from "@prisma/adapter-d1";
 import { PrismaClient, User } from "@prisma/client";
 import { Hono } from "hono";
+import { cors } from "hono/cors";
 import { contextPrisma } from "./prisma";
 
 const app = new Hono<{ Bindings: Bindings }>().basePath("/api");
+
+app.use(
+  "/users",
+  cors({
+    origin: ["{許可するURL1}", "{許可するURL2}"],
+    allowHeaders: [
+      "X-Custom-Header",
+      "Upgrade-Insecure-Requests",
+      "Content-Type",
+    ],
+    allowMethods: ["GET", "POST", "OPTIONS"],
+    exposeHeaders: ["Content-Length", "X-Kuma-Revision"],
+    maxAge: 600,
+    credentials: true,
+  })
+);
+
+app.use(
+  "/users/*",
+  cors({
+    origin: ["{許可するURL1}", "{許可するURL2}"],
+    allowHeaders: [
+      "X-Custom-Header",
+      "Upgrade-Insecure-Requests",
+      "Content-Type",
+    ],
+    allowMethods: ["GET", "PUT", "DELETE", "OPTIONS"],
+    exposeHeaders: ["Content-Length", "X-Kuma-Revision"],
+    maxAge: 600,
+    credentials: true,
+  })
+);
 
 app.get("/users", async (c) => {
   const adapter = new PrismaD1(c.env.DB);
