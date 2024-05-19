@@ -7,5 +7,5 @@ compatibility_flags = ["nodejs_compat"]
 [[d1_databases]]
 binding = "DB" # i.e. available in your Worker on env.DB
 database_name = "user-prisma-api"
-database_id = "ac872d93-c78e-474b-8a47-e876e640ae40"
+database_id = "<unique-ID-for-your-database>"
 migrations_dir = "prisma/migrations"
