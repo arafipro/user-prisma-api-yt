@@ -1,6 +1,7 @@
 import { PrismaD1 } from "@prisma/adapter-d1";
 import { PrismaClient, User } from "@prisma/client";
 import { Hono } from "hono";
+import { contextPrisma } from "./prisma";
 
 const app = new Hono<{ Bindings: Bindings }>().basePath("/api");
 
@@ -63,8 +64,7 @@ app.put("/users/:id", async (c) => {
 
 app.delete("/users/:id", async (c) => {
   const id = parseInt(c.req.param("id"));
-  const adapter = new PrismaD1(c.env.DB);
-  const prisma = new PrismaClient({ adapter });
+  const prisma = contextPrisma(c);
   try {
     await prisma.user.delete({
       where: { id: id },
