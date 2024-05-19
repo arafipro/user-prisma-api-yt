@@ -37,12 +37,6 @@ database_id = "<unique-ID-for-your-database>"
 
 `<unique-ID-for-your-database>`はデータベースを作成したときに出力されるID
 
-### テーブルのスキーマを作成
-
-```bash
-npm run generate
-```
-
 ### ローカルデータベースにテーブルを作成
 
 ```bash
@@ -67,12 +61,19 @@ npx wrangler d1 execute user-prisma-api --local --file=./prisma/dummy-data.sql
 npx wrangler d1 execute user-prisma-api --remote --file=./prisma/dummy-data.sql
 ```
 
+## デプロイ
+
+```bash
+npm run deploy
+```
+
 ## APIに接続を許可するURLを指定(CORS)
 
 `src/index.ts`のcorsのoriginに接続を許可するURLを指定する  
 配列で複数指定することも可能  
+コメントアウトして使用する
 接続を許可するURLを指定する場合は最後のスラッシュ（/）は不要  
-例）`http://localhost:8000（/は不要）`    
+例）`http://localhost:8000（/は不要）`  
 
 ### /users
 
