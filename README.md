@@ -2,7 +2,7 @@
 
 ## YouTube
 
-[!["【Cloudflare Workers】Hono＋Cloudflare D1＋Prisma 20分でREST APIを作成"](https://i.ytimg.com/vi/<>/maxresdefault.jpg)](https://youtu.be/<>)
+[!["【Cloudflare Workers】Hono＋Cloudflare D1＋Prisma 20分でREST APIを作成"](https://i.ytimg.com/vi/f641dliqzwQ/maxresdefault.jpg)](https://youtu.be/f641dliqzwQ)
 
 ## 技術選定
 
